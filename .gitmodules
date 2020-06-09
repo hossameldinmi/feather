@@ -1,0 +1,3 @@
+[submodule "core_fe"]
+	path = core_fe
+	url = https://github.com/hossameldinmi/core_fe.git
