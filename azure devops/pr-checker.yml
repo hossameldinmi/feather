@@ -24,18 +24,19 @@ jobs:
       submodules: recursive # set to 'true' for a single level of submodules or 'recursive' to get submodules of submodules
       path: \core_fe\ # path to check out source code, relative to the agent's build directory (e.g. \_work\1)
       persistCredentials: true # set to 'true' to leave
-      - task: FlutterTest@0
-        displayName: Feather.Presentation tests
-        inputs:
-          projectDirectory: $(projectDirectory)
-      - task: FlutterTest@0
-        displayName: Feather.DomainLogic tests
-        inputs:
-          projectDirectory: $(domainLogicDirectory)
-      - task: FlutterTest@0
-        displayName: Feather.Infrastructure tests
-        inputs:
-          projectDirectory: $(infrastructureDirectory)
+      
+    - task: FlutterTest@0
+      displayName: Feather.Presentation tests
+      inputs:
+        projectDirectory: $(projectDirectory)
+    - task: FlutterTest@0
+      displayName: Feather.DomainLogic tests
+      inputs:
+        projectDirectory: $(domainLogicDirectory)
+    - task: FlutterTest@0
+      displayName: Feather.Infrastructure tests
+      inputs:
+        projectDirectory: $(infrastructureDirectory)
 
   - job: Android
     steps:
