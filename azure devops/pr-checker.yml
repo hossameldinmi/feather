@@ -1,5 +1,5 @@
 
-displayName: PR-Checker
+name: Feather PR-Checker
 variables:
   projectDirectory: feather_presentation
   domainLogicDirectory: feather_domain_logic
@@ -20,17 +20,17 @@ jobs:
   - job: run tests
     steps:
       - task: FlutterTest@0
-      displayName: Feather.Presentation tests
+        displayName: Feather.Presentation tests
         inputs:
           projectDirectory: $(projectDirectory)
-    - task: FlutterTest@0
-      displayName: Feather.DomainLogic tests
-      inputs:
-        projectDirectory: $(domainLogicDirectory)
-    - task: FlutterTest@0
-      displayName: Feather.Infrastructure tests
-      inputs:
-        projectDirectory: $(infrastructureDirectory)
+      - task: FlutterTest@0
+        displayName: Feather.DomainLogic tests
+        inputs:
+          projectDirectory: $(domainLogicDirectory)
+      - task: FlutterTest@0
+        displayName: Feather.Infrastructure tests
+        inputs:
+          projectDirectory: $(infrastructureDirectory)
 
   - job: Android
     steps:
