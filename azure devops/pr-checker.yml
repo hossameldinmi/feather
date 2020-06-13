@@ -1,0 +1,47 @@
+
+displayName: PR-Checker
+variables:
+  projectDirectory: feather_presentation
+  domainLogicDirectory: feather_domain_logic
+  infrastructureDirectory: feather_infrastructure
+
+trigger:
+  - master
+  - develop
+  - releases/*
+  - azure-pipelines/*
+
+pr:
+  - master
+  - develop
+pool:
+  vmImage: "macOS-latest"
+jobs:
+  - job: run tests
+    steps:
+      - task: FlutterTest@0
+      displayName: Feather.Presentation tests
+        inputs:
+          projectDirectory: $(projectDirectory)
+    - task: FlutterTest@0
+      displayName: Feather.DomainLogic tests
+      inputs:
+        projectDirectory: $(domainLogicDirectory)
+    - task: FlutterTest@0
+      displayName: Feather.Infrastructure tests
+      inputs:
+        projectDirectory: $(infrastructureDirectory)
+
+  - job: Android
+    steps:
+      - task: FlutterInstall@0
+      - task: FlutterBuild@0
+        inputs:
+          target: apk
+          projectDirectory: $(projectDirectory)
+
+      - task: CopyFiles@2
+        inputs:
+          contents: "**/*.apk"
+          targetFolder: "$(build.artifactStagingDirectory)"
+      - task: PublishBuildArtifacts@1
