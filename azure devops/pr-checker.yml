@@ -1,5 +1,4 @@
-
-name: Feather PR-Checker
+name: Feather_PR_Checker
 variables:
   projectDirectory: feather_presentation
   domainLogicDirectory: feather_domain_logic
