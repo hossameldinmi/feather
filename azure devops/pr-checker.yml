@@ -16,7 +16,7 @@ pr:
 pool:
   vmImage: "macOS-latest"
 jobs:
-  - job: run tests
+  - job: Tests
     steps:
       - task: FlutterTest@0
         displayName: Feather.Presentation tests
