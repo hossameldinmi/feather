@@ -9,9 +9,6 @@ trigger:
   - releases/*
   - azure-pipelines/*
 
-pr:
-  - master
-  - develop
 pool:
   vmImage: "macOS-latest"
 
